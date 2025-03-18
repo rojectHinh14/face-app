@@ -36,9 +36,13 @@ const LoginPage = () => {
    };
    if(isSuccess){
     dispatch(openSnackBar({ message: error?.data?.message || "Dang nhap thanh cong"}))
-    navigate("/verify-otp")
+    navigate("/verify-otp"),{
+      state: {
+        email: getValues('emails')
+      }
+    }
    }
-  }, [isError, error, dispatch, isSuccess, data.message, navigate])
+  }, [isError, error, dispatch,getValues, isSuccess, data.message, navigate])
 
   const onSubmit = (data) => {
     console.log("Dữ liệu form:", data);
